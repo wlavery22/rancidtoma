@@ -30,9 +30,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>All Movies</h1>
       </header>
       <main>
-        <h1>All Movies</h1>
         <AllMovies movies={movies} />
       </main>
     </div>
