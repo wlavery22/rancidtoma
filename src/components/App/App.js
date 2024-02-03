@@ -12,6 +12,7 @@ function App() {
 
 	const handleMovieClick = () => {
 		setShowMovieInfo(true);
+		//log(event.target.closet.div.id)
 		console.log("hit handleMovieClick");
 	}
 
@@ -19,18 +20,21 @@ function App() {
 		setShowMovieInfo(false);
 		console.log("hit handleBackClick");
 	}
+	
+  function fetchAllMovies() {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => response.json())
+    .then(data => setMovies(data.movies))
+    .catch(error => console.log(error.message))
+  }
 
-	// useEffect(() => {
-	// 	console.log('handleMovieClick');
-	// },[showMovieInfo])
+  useEffect(() => {
+    fetchAllMovies()
+  },[])
+	//function fetchStuff(){fetch().then(setMovies(data))}
+	// useEffect(() => fetchStuff() , } []
+	// .then(data => setIdeas([...ideas, ...data]))
 
-	// function showMovieStuff({name, isMovie}) {
-	// 	if(isMovie) {
-	// 		return <AllMovies movies={movies}/>
-	// 	}else {
-	// 		return <MovieInfo/>
-	// 	}
-	// }
 
   return (
     <div className="App">
@@ -50,3 +54,15 @@ function App() {
 }
 
 export default App;
+
+	// useEffect(() => {
+	// 	console.log('handleMovieClick');
+	// },[showMovieInfo])
+
+	// function showMovieStuff({name, isMovie}) {
+	// 	if(isMovie) {
+	// 		return <AllMovies movies={movies}/>
+	// 	}else {
+	// 		return <MovieInfo/>
+	// 	}
+	// }
