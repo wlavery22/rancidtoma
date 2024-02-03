@@ -1,16 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import './Movie.css';
 
 
-function Movie({ id, posterPath, title, rating}){
-	const [movieInfo, setMovieInfo] = useState(false);
-	const onClick = () => setMovieInfo(true);
+function Movie({ id, posterPath, title, rating , onMovieClick}){
+	const [movieInfo, setMovieInfo] = useState(true);
+	// setMovieInfo(false);
+	const onClick = () => {
+		setMovieInfo(false);
+	};
+
+	useEffect(() => {
+		// console.log("changed value",movieInfo);
+		console.log("handleMovieClick in movie.js" , onMovieClick);
+	}, [movieInfo])
 
 	return (
-		<div className='movie-card' id={id} onClick={onClick} >
+		<div className='movie-card' id={id} onClick={onMovieClick} >
 			<img src = {posterPath} alt = {title}/>
-			{ movieInfo ? <MovieInfo/> : null}
 			<h2>{rating}</h2>
 		</div>
 	)
