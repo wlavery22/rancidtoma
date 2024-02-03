@@ -16,9 +16,9 @@ function AllMovies( {movies , onMovieClick} ){
 			/>
 		)
 	})
-	useEffect(() => {
-		console.log("onMovieClick",onMovieClick);
-	}, [moviesCards])
+	// useEffect(() => {
+	// 	console.log("onMovieClick",onMovieClick);
+	// }, [moviesCards])
 
 	return (
 		<div className='all-movies-container'>

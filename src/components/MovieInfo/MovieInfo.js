@@ -1,6 +1,6 @@
 import Movie from "../Movie/Movie";
 
-function MovieInfo( {handleBackClick} ) {
+function MovieInfo( {onExitClick} ) {
 	const dummyMovie = {
 		"movie":
 		{
@@ -21,7 +21,8 @@ function MovieInfo( {handleBackClick} ) {
 	}
 	console.log('in MovieInfo');
 	return (
-		<div className="movieInfo" id={dummyMovie.movie.id} style={{background_image: new URL(dummyMovie.movie.backdrop_path)}} onClick={handleBackClick}>   
+		<div className="movieInfo" id={dummyMovie.movie.id}
+		 style={{background_image: new URL(dummyMovie.movie.backdrop_path)}} onClick={onExitClick}>   
 			<p className="synopsis">{dummyMovie.movie.overview}</p>
       <p className="rating">{dummyMovie.movie.average_rating}</p>
       <p className="poster">{dummyMovie.movie.title}</p>

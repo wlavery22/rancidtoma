@@ -16,21 +16,21 @@ function App() {
 	}
 
 	const handleBackClick = () => {
-		setShowMovieInfo(true);
+		setShowMovieInfo(false);
 		console.log("hit handleBackClick");
 	}
 
-	useEffect(() => {
-		console.log('handleMovieClick');
-	},[showMovieInfo])
+	// useEffect(() => {
+	// 	console.log('handleMovieClick');
+	// },[showMovieInfo])
 
-	function showMovieStuff({name, isMovie}) {
-		if(isMovie) {
-			return <AllMovies movies={movies}/>
-		}else {
-			return <MovieInfo/>
-		}
-	}
+	// function showMovieStuff({name, isMovie}) {
+	// 	if(isMovie) {
+	// 		return <AllMovies movies={movies}/>
+	// 	}else {
+	// 		return <MovieInfo/>
+	// 	}
+	// }
 
   return (
     <div className="App">
@@ -41,7 +41,7 @@ function App() {
 				{!showMovieInfo ? (
 					<AllMovies movies={movies} onMovieClick={handleMovieClick}/>
 				) : (
-					<MovieInfo />
+					<MovieInfo onExitClick={handleBackClick} />
 				)
 				}
       </main>

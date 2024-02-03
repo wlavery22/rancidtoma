@@ -10,10 +10,10 @@ function Movie({ id, posterPath, title, rating , onMovieClick}){
 		setMovieInfo(false);
 	};
 
-	useEffect(() => {
-		// console.log("changed value",movieInfo);
-		console.log("handleMovieClick in movie.js" , onMovieClick);
-	}, [movieInfo])
+	// useEffect(() => {
+	// 	// console.log("changed value",movieInfo);
+	// 	console.log("handleMovieClick in movie.js" , onMovieClick);
+	// }, [movieInfo])
 
 	return (
 		<div className='movie-card' id={id} onClick={onMovieClick} >
