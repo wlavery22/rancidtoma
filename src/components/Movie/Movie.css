@@ -4,12 +4,14 @@
   padding: 10px;
 	width: 250px;
 	color: white;
+	transition: 0.3s;
 }
 
 .movie-card:hover {
 	transform: scale(1.2);
 	background-color: #818181;
 	transition: 0.3s;
+	cursor: pointer;
 }
 
 img{
