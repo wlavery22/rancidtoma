@@ -1,7 +1,7 @@
 import './AllMovies.css';
 import Movie from '../Movie/Movie';
 import { useEffect , useState} from 'react';
-function AllMovies( {movies , onMovieClick} ){
+function AllMovies( {movies , onMovieClick, updateMovieId , updateMovieInfo} ){
 	const [testStuff, setTestStuff] = useState(10);
 
 	const moviesCards = movies.map(movie => {
@@ -13,6 +13,8 @@ function AllMovies( {movies , onMovieClick} ){
 				title={movie.title}
 				rating={Math.round(movie.average_rating * 10) / 10}
 				onMovieClick={onMovieClick}
+				updateMovieId={updateMovieId}
+				updateMovieInfo={updateMovieInfo}
 			/>
 		)
 	})
