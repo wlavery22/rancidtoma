@@ -10,6 +10,7 @@ function App() {
 	const [showMovieInfo, setShowMovieInfo] = useState(false);
   const [movieId, setMovieId] = useState(0);
 	const [singleMovieInfo, setSingleMovieInfo] = useState({});
+  const [error, setError] = useState("")
   
 
   function handleMovieClick() {
@@ -24,6 +25,10 @@ function App() {
 		console.log("Id value:",movieId);
 		// console.log("hit handleMovieClick");
   }
+
+	function handleError(error) {
+		setError(error)
+	}
 
 	function updateMovieInfo(info) {
 		setSingleMovieInfo(info)
@@ -45,9 +50,15 @@ function App() {
 	
   function fetchAllMovies() {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+        } else {
+        return response.json()
+        }
+    })
     .then(data => setMovies(data.movies))
-    .catch(error => console.log(error.message))
+    .catch(error => handleError(error.message))
   }
 
   useEffect(() => {
@@ -57,6 +68,10 @@ function App() {
 	useEffect(() => {
 		console.log('Movie Info Object:',singleMovieInfo);
 	},[singleMovieInfo])
+
+	useEffect(() => {
+		console.log('Got error: ',error);
+	},[error])
 
 	useEffect(() => {
 		console.log("movieId in App.js",movieId);
@@ -70,25 +85,43 @@ function App() {
 	// useEffect(() => fetchStuff() , } []
 	// .then(data => setIdeas([...ideas, ...data]))
 
+	if (error) {
+		return (
+			<h2>Error{error}</h2>
+		)
+	}
+
+	// const name = gender === 'male' ? 'Dan' : age < 40 ? 'Diane' : 'Rebecca'
+
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>All Movies</h1>
+				{/* {error && <h2>Error{error}</h2>} */}
       </header>
       <main>
-				{!showMovieInfo ? (
-					<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo}/>
-				) : (
-					<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
-				)
-				}
+		 {error ? (
+			<h2>Error{error}</h2>
+		) : !showMovieInfo ? (
+			<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>
+		) : (
+			<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
+		)} 
+			{/* {!showMovieInfo ? (
+				<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>
+			) : (
+				<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
+			)
+			} */}
       </main>
     </div>
   );
 }
 
 export default App;
+
+
 
 	// useEffect(() => {
 	// 	console.log('handleMovieClick');

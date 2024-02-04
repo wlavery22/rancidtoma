@@ -1,4 +1,5 @@
 import Movie from "../Movie/Movie";
+import PropTypes from 'prop-types';
 
 function MovieInfo( {onExitClick, singleMovieInfo} ) {
 	const dummyMovie = {
@@ -33,3 +34,8 @@ function MovieInfo( {onExitClick, singleMovieInfo} ) {
 }
 
 export default MovieInfo;
+
+MovieInfo.propTypes = {
+  onExitClick: PropTypes.func.isRequired,
+  singleMovieInfo: PropTypes.object.isRequired,
+}
