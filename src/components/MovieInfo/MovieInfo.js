@@ -1,6 +1,7 @@
 import Movie from "../Movie/Movie";
+import PropTypes from 'prop-types';
 
-function MovieInfo( {onExitClick} ) {
+function MovieInfo( {onExitClick, singleMovieInfo} ) {
 	const dummyMovie = {
 		"movie":
 		{
@@ -17,19 +18,22 @@ function MovieInfo( {onExitClick} ) {
 			runtime: 139,
 			tagline: "It's a movie!"
 		}
-		// return (the strucutre of the div that holds the movieInfo)
 	}
-	console.log('in MovieInfo');
 	return (
-		<div className="movieInfo" id={dummyMovie.movie.id}
-		 style={{background_image: new URL(dummyMovie.movie.backdrop_path)}} onClick={onExitClick}>   
-			<p className="synopsis">{dummyMovie.movie.overview}</p>
-      <p className="rating">{dummyMovie.movie.average_rating}</p>
-      <p className="poster">{dummyMovie.movie.title}</p>
-      <p className="runTime">{dummyMovie.movie.runtime}</p>
-      <p className="genres">{dummyMovie.movie.genres}</p>
+		<div className="movieInfo" id={singleMovieInfo.id} onClick={onExitClick}>
+			<img src = {singleMovieInfo.backdrop_path} alt = {singleMovieInfo.title}/>   
+			<p className="synopsis">{singleMovieInfo.overview}</p>
+      <p className="rating">{singleMovieInfo.average_rating}</p>
+      <p className="poster">{singleMovieInfo.title}</p>
+      <p className="runTime">{singleMovieInfo.runtime}</p>
+      <p className="genres">{singleMovieInfo.genres}</p>
 		</div>
 	)
 }
 
 export default MovieInfo;
+
+MovieInfo.propTypes = {
+  onExitClick: PropTypes.func.isRequired,
+  singleMovieInfo: PropTypes.object.isRequired,
+}

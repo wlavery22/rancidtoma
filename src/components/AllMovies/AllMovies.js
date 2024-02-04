@@ -1,7 +1,9 @@
 import './AllMovies.css';
 import Movie from '../Movie/Movie';
 import { useEffect , useState} from 'react';
-function AllMovies( {movies , onMovieClick} ){
+import PropTypes from 'prop-types';
+
+function AllMovies( {movies , onMovieClick, updateMovieId , updateMovieInfo, handleError} ){
 	const [testStuff, setTestStuff] = useState(10);
 
 	const moviesCards = movies.map(movie => {
@@ -13,12 +15,12 @@ function AllMovies( {movies , onMovieClick} ){
 				title={movie.title}
 				rating={Math.round(movie.average_rating * 10) / 10}
 				onMovieClick={onMovieClick}
+				updateMovieId={updateMovieId}
+				updateMovieInfo={updateMovieInfo}
+				handleError={handleError}
 			/>
 		)
 	})
-	// useEffect(() => {
-	// 	console.log("onMovieClick",onMovieClick);
-	// }, [moviesCards])
 
 	return (
 		<div className='all-movies-container'>
@@ -28,3 +30,11 @@ function AllMovies( {movies , onMovieClick} ){
 }
 
 export default AllMovies;
+
+AllMovies.propTypes = {
+  movies: PropTypes.array.isRequired,
+  onMovieClick: PropTypes.func.isRequired,
+  updateMovieId: PropTypes.func.isRequired,
+  updateMovieInfo: PropTypes.func.isRequired,
+  handleError: PropTypes.func.isRequired,
+}

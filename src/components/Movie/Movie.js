@@ -1,22 +1,34 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState , useRef } from 'react';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import './Movie.css';
+import PropTypes from 'prop-types';
 
 
-function Movie({ id, posterPath, title, rating , onMovieClick}){
+function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, updateMovieInfo, handleError }){
 	const [movieInfo, setMovieInfo] = useState(true);
-	// setMovieInfo(false);
-	const onClick = () => {
-		setMovieInfo(false);
-	};
+	const myElementRef = useRef(null);
+	const handleClick = () => {
 
-	// useEffect(() => {
-	// 	// console.log("changed value",movieInfo);
-	// 	console.log("handleMovieClick in movie.js" , onMovieClick);
-	// }, [movieInfo])
+		fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
+    .then(response => {
+		if (!response.ok) {
+			throw new Error(`${response.status}: ${response.statusText}`);
+		  } else {
+			return response.json()
+		  }
+	})
+		.then(data => {
+			updateMovieInfo(data.movie)
+			updateMovieId(id)
+			onMovieClick()
+		})
+    .catch(error => {
+		handleError(error.message)
+	})
 
+	}
 	return (
-		<div className='movie-card' id={id} onClick={onMovieClick} >
+		<div className='movie-card' id={id} onClick={handleClick} >
 			<img src = {posterPath} alt = {title}/>
 			<h2>{rating}</h2>
 		</div>
@@ -24,3 +36,20 @@ function Movie({ id, posterPath, title, rating , onMovieClick}){
 }
 
 export default Movie;
+
+function isURL(props, propName, componentName) {
+  if (!/^https?:\/\/\S+$/.test(props[propName])) {
+    return new Error(
+      `Invalid prop ${propName} supplied to ${componentName}. Validation failed.`
+    );
+  }
+}
+
+Movie.propTypes = {
+  id: PropTypes.number.isRequired,
+	posterPath: isURL,
+	title: PropTypes.string.isRequired,
+  onMovieClick: PropTypes.func.isRequired,
+  updateMovieId: PropTypes.func.isRequired,
+  updateMovieInfo: PropTypes.func.isRequired,
+}

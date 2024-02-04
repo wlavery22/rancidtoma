@@ -1,4 +1,3 @@
-// import logo from './logo.svg';
 import './App.css';
 import movieData from '../../data';
 import AllMovies from '../AllMovies/AllMovies';
@@ -9,28 +8,60 @@ function App() {
 
   const [movies, setMovies] = useState(movieData);
 	const [showMovieInfo, setShowMovieInfo] = useState(false);
+  const [movieId, setMovieId] = useState(0);
+	const [singleMovieInfo, setSingleMovieInfo] = useState({});
+  const [error, setError] = useState("")
+  
 
-	const handleMovieClick = () => {
+  function handleMovieClick() {
 		setShowMovieInfo(true);
-		console.log("hit handleMovieClick");
+  }
+
+	function handleError(error) {
+		setError(error)
 	}
+
+	function updateMovieInfo(info) {
+		setSingleMovieInfo(info)
+	}
+
+	function updateMovieId(id) {
+		setMovieId(id);
+	}
+
 
 	const handleBackClick = () => {
 		setShowMovieInfo(false);
-		console.log("hit handleBackClick");
 	}
+	
+  function fetchAllMovies() {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`${response.status}: ${response.statusText}`);
+        } else {
+        return response.json()
+        }
+    })
+    .then(data => setMovies(data.movies))
+    .catch(error => handleError(error.message))
+  }
+
+  useEffect(() => {
+    fetchAllMovies()
+  },[])
 
 	// useEffect(() => {
-	// 	console.log('handleMovieClick');
-	// },[showMovieInfo])
+	// 	console.log('Movie Info Object:',singleMovieInfo);
+	// },[singleMovieInfo])
 
-	// function showMovieStuff({name, isMovie}) {
-	// 	if(isMovie) {
-	// 		return <AllMovies movies={movies}/>
-	// 	}else {
-	// 		return <MovieInfo/>
-	// 	}
-	// }
+	// useEffect(() => {
+	// 	console.log('Got error: ',error);
+	// },[error])
+
+	// useEffect(() => {
+	// 	console.log("movieId in App.js",movieId);
+	// },[movieId])
 
   return (
     <div className="App">
@@ -38,12 +69,13 @@ function App() {
         <h1>All Movies</h1>
       </header>
       <main>
-				{!showMovieInfo ? (
-					<AllMovies movies={movies} onMovieClick={handleMovieClick}/>
-				) : (
-					<MovieInfo onExitClick={handleBackClick} />
-				)
-				}
+		 {error ? (
+			<h2>Error{error}</h2>
+		) : !showMovieInfo ? (
+			<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>
+		) : (
+			<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
+		)} 
       </main>
     </div>
   );
