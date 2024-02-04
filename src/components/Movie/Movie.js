@@ -7,20 +7,7 @@ import PropTypes from 'prop-types';
 function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, updateMovieInfo, handleError }){
 	const [movieInfo, setMovieInfo] = useState(true);
 	const myElementRef = useRef(null);
-	// setMovieInfo(false);
-	// const onClick = () => {
-	// 	setMovieInfo(false);
-	// };
-
-	// useEffect(() => {
-	// 	// console.log("changed value",movieInfo);
-	// 	console.log("handleMovieClick in movie.js" , onMovieClick);
-	// }, [movieInfo])
 	const handleClick = () => {
-		console.log('Specific Movie Id in Movie.js: ', id);
-		// console.log('Specific Movie Id type: ', typeof id);
-		
-		// fetch
 
 		fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${id}`)
     .then(response => {

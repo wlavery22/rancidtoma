@@ -18,9 +18,7 @@ function MovieInfo( {onExitClick, singleMovieInfo} ) {
 			runtime: 139,
 			tagline: "It's a movie!"
 		}
-		// return (the strucutre of the div that holds the movieInfo)
 	}
-	console.log('in MovieInfo');
 	return (
 		<div className="movieInfo" id={singleMovieInfo.id} onClick={onExitClick}>
 			<img src = {singleMovieInfo.backdrop_path} alt = {singleMovieInfo.title}/>   

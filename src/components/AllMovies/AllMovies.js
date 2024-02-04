@@ -21,9 +21,6 @@ function AllMovies( {movies , onMovieClick, updateMovieId , updateMovieInfo, han
 			/>
 		)
 	})
-	// useEffect(() => {
-	// 	console.log("onMovieClick",onMovieClick);
-	// }, [moviesCards])
 
 	return (
 		<div className='all-movies-container'>
