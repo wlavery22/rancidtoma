@@ -2,6 +2,7 @@ import { useEffect, useState , useRef } from 'react';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import './Movie.css';
 import PropTypes from 'prop-types';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
 
 function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, updateMovieInfo, handleError }){
@@ -28,10 +29,12 @@ function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, upd
 
 	}
 	return (
+		<Link to={`/${id}`}>
 		<div className='movie-card' id={id} onClick={handleClick} >
 			<img src = {posterPath} alt = {title}/>
 			<h2>{rating}</h2>
 		</div>
+		</Link>
 	)
 }
 

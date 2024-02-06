@@ -2,6 +2,7 @@ import './App.css';
 import movieData from '../../data';
 import AllMovies from '../AllMovies/AllMovies';
 import MovieInfo from '../MovieInfo/MovieInfo';
+import { Routes, Route } from 'react-router-dom';
 import  { useEffect, useState } from 'react';
 
 function App() {
@@ -69,16 +70,25 @@ function App() {
         <h1>All Movies</h1>
       </header>
       <main>
-		 {error ? (
+				<Routes>
+					<Route path='/' element={<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>}/>
+					<Route path='/:id' element={<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo}/>}/>
+				</Routes>
+		 {/* {error ? (
 			<h2>Error{error}</h2>
 		) : !showMovieInfo ? (
-			<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>
+			<AllMovies movies={movies} onMovieClick={handleMovieClick} 
+			updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} 
+			handleError={handleError}/>
 		) : (
 			<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
-		)} 
+		)}  */}
       </main>
     </div>
   );
 }
+
+//http://localhost:3000/24
+//http://localhost:3000/*
 
 export default App;

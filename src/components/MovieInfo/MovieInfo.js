@@ -1,5 +1,7 @@
 import Movie from "../Movie/Movie";
 import PropTypes from 'prop-types';
+import { useParams, Link, Outlet } from 'react-router-dom';
+
 
 function MovieInfo( {onExitClick, singleMovieInfo} ) {
 	const dummyMovie = {
@@ -20,6 +22,7 @@ function MovieInfo( {onExitClick, singleMovieInfo} ) {
 		}
 	}
 	return (
+		<Link to={`/`}>
 		<div className="movieInfo" id={singleMovieInfo.id} onClick={onExitClick}>
 			<img src = {singleMovieInfo.backdrop_path} alt = {singleMovieInfo.title}/>   
 			<p className="synopsis">{singleMovieInfo.overview}</p>
@@ -28,6 +31,7 @@ function MovieInfo( {onExitClick, singleMovieInfo} ) {
       <p className="runTime">{singleMovieInfo.runtime}</p>
       <p className="genres">{singleMovieInfo.genres}</p>
 		</div>
+		</Link>
 	)
 }
 
