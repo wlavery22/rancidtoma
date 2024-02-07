@@ -31,7 +31,6 @@ function App() {
 		setMovieId(id);
 	}
 
-
 	const handleBackClick = () => {
 		setShowMovieInfo(false);
 	}
@@ -74,7 +73,7 @@ function App() {
 				<Routes>
 					<Route path='/' element={<AllMovies movies={movies} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>}/>
 					<Route path='/movie/:id' element={<MovieInfo singleMovieInfo={singleMovieInfo}/>}/>
-					<Route path='/*' element={<Error />}/>
+					<Route path='*' element={<Error />}/>
 				</Routes>
 				{/* <Link to={`/${id}`}></Link> */}
 		 {/* {error ? (
