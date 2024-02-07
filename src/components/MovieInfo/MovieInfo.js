@@ -1,7 +1,9 @@
 import Movie from "../Movie/Movie";
 import PropTypes from 'prop-types';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
-function MovieInfo( {onExitClick, singleMovieInfo} ) {
+
+function MovieInfo( { singleMovieInfo} ) {
 	const dummyMovie = {
 		"movie":
 		{
@@ -19,8 +21,11 @@ function MovieInfo( {onExitClick, singleMovieInfo} ) {
 			tagline: "It's a movie!"
 		}
 	}
+	let testVariable = useParams();
+	// console.log(testVariable);
 	return (
-		<div className="movieInfo" id={singleMovieInfo.id} onClick={onExitClick}>
+		<Link to={`/`}>
+		<div className="movieInfo" id={singleMovieInfo.id}>
 			<img src = {singleMovieInfo.backdrop_path} alt = {singleMovieInfo.title}/>   
 			<p className="synopsis">{singleMovieInfo.overview}</p>
       <p className="rating">{singleMovieInfo.average_rating}</p>
@@ -28,12 +33,13 @@ function MovieInfo( {onExitClick, singleMovieInfo} ) {
       <p className="runTime">{singleMovieInfo.runtime}</p>
       <p className="genres">{singleMovieInfo.genres}</p>
 		</div>
+		</Link>
 	)
 }
 
 export default MovieInfo;
 
 MovieInfo.propTypes = {
-  onExitClick: PropTypes.func.isRequired,
+  // onExitClick: PropTypes.func.isRequired,
   singleMovieInfo: PropTypes.object.isRequired,
 }

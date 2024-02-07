@@ -2,9 +2,10 @@ import { useEffect, useState , useRef } from 'react';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import './Movie.css';
 import PropTypes from 'prop-types';
+import { useParams, Link, Outlet } from 'react-router-dom';
 
 
-function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, updateMovieInfo, handleError }){
+function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, handleError }){
 	const [movieInfo, setMovieInfo] = useState(true);
 	const myElementRef = useRef(null);
 	const handleClick = () => {
@@ -20,7 +21,7 @@ function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, upd
 		.then(data => {
 			updateMovieInfo(data.movie)
 			updateMovieId(id)
-			onMovieClick()
+			// onMovieClick()
 		})
     .catch(error => {
 		handleError(error.message)
@@ -28,10 +29,12 @@ function Movie({ id, posterPath, title, rating, onMovieClick, updateMovieId, upd
 
 	}
 	return (
+		<Link to={`/movie/${id}`}>
 		<div className='movie-card' id={id} onClick={handleClick} >
 			<img src = {posterPath} alt = {title}/>
 			<h2>{rating}</h2>
 		</div>
+		</Link>
 	)
 }
 
@@ -49,7 +52,7 @@ Movie.propTypes = {
   id: PropTypes.number.isRequired,
 	posterPath: isURL,
 	title: PropTypes.string.isRequired,
-  onMovieClick: PropTypes.func.isRequired,
+  // onMovieClick: PropTypes.func.isRequired,
   updateMovieId: PropTypes.func.isRequired,
   updateMovieInfo: PropTypes.func.isRequired,
 }

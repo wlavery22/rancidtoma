@@ -2,6 +2,8 @@ import './App.css';
 import movieData from '../../data';
 import AllMovies from '../AllMovies/AllMovies';
 import MovieInfo from '../MovieInfo/MovieInfo';
+import Error from '../Error/Error.js'
+import { Routes, Route } from 'react-router-dom';
 import  { useEffect, useState } from 'react';
 
 function App() {
@@ -28,7 +30,6 @@ function App() {
 	function updateMovieId(id) {
 		setMovieId(id);
 	}
-
 
 	const handleBackClick = () => {
 		setShowMovieInfo(false);
@@ -69,16 +70,27 @@ function App() {
         <h1>All Movies</h1>
       </header>
       <main>
-		 {error ? (
+				<Routes>
+					<Route path='/' element={<AllMovies movies={movies} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>}/>
+					<Route path='/movie/:id' element={<MovieInfo singleMovieInfo={singleMovieInfo}/>}/>
+					<Route path='*' element={<Error />}/>
+				</Routes>
+				{/* <Link to={`/${id}`}></Link> */}
+		 {/* {error ? (
 			<h2>Error{error}</h2>
 		) : !showMovieInfo ? (
-			<AllMovies movies={movies} onMovieClick={handleMovieClick} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>
+			<AllMovies movies={movies} onMovieClick={handleMovieClick} 
+			updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} 
+			handleError={handleError}/>
 		) : (
 			<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
-		)} 
+		)}  */}
       </main>
     </div>
   );
 }
+
+//http://localhost:3000/24
+//http://localhost:3000/*
 
 export default App;
