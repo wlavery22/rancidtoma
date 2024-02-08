@@ -1,4 +1,5 @@
 import Movie from "../Movie/Movie";
+import Error from "../Error/Error";
 import PropTypes from 'prop-types';
 import { useParams, Link, Outlet } from 'react-router-dom';
 
@@ -23,18 +24,24 @@ function MovieInfo( { singleMovieInfo} ) {
 	}
 	let testVariable = useParams();
 	// console.log(testVariable);
-	return (
-		<Link to={`/`}>
-		<div className="movieInfo" id={singleMovieInfo.id}>
-			<img src = {singleMovieInfo.backdrop_path} alt = {singleMovieInfo.title}/>   
-			<p className="synopsis">{singleMovieInfo.overview}</p>
-      <p className="rating">{singleMovieInfo.average_rating}</p>
-      <p className="poster">{singleMovieInfo.title}</p>
-      <p className="runTime">{singleMovieInfo.runtime}</p>
-      <p className="genres">{singleMovieInfo.genres}</p>
-		</div>
-		</Link>
-	)
+	console.log('singlemovieinfo', singleMovieInfo)
+	if(singleMovieInfo.id) {
+		return (
+			<Link to={`/`}>
+			<div className="movieInfo" id={singleMovieInfo.id}>
+				<img src = {singleMovieInfo.backdrop_path} alt = {singleMovieInfo.title}/>   
+				<p className="synopsis">{singleMovieInfo.overview}</p>
+		  <p className="rating">{singleMovieInfo.average_rating}</p>
+		  <p className="poster">{singleMovieInfo.title}</p>
+		  <p className="runTime">{singleMovieInfo.runtime}</p>
+		  <p className="genres">{singleMovieInfo.genres}</p>
+			</div>
+			</Link>
+		)
+	} else {
+		return <Error />
+	}
+
 }
 
 export default MovieInfo;

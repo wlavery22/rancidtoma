@@ -7,6 +7,7 @@ import { useParams, Link, Outlet } from 'react-router-dom';
 
 function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, handleError }){
 	const [movieInfo, setMovieInfo] = useState(true);
+	const [hasError, setHasError] = useState(false);
 	const myElementRef = useRef(null);
 	const handleClick = () => {
 
@@ -24,6 +25,7 @@ function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, 
 			// onMovieClick()
 		})
     .catch(error => {
+			console.log('Did not get Movie');
 		handleError(error.message)
 	})
 
