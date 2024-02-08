@@ -52,4 +52,17 @@ describe('template spec', () => {
 			.get(".movieInfo").click()
 			.get(".all-movies-container").find('.movie-card').eq(0).should("have.id", 436270)
 	});
+
+	it('Should be able to handle 500 level errors', () => {
+		cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies', {
+			statusCode: 200,
+			fixture: 'get-data.json'
+
+		})
+		cy.intercept('GET', 'https://rancid-tomatillos.herokuapp.com/api/v2/movies/436270', {
+			statusCode: 500,
+		})
+			.get(".all-movies-container").find('.movie-card').eq(0).click()
+			.get('.errorPage')
+	});
 })
