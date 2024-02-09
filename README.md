@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Rancid Tomatoes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Developed by:
+  Matthew Shindel : <matthew@shindel.com>
+  Dan Lavery : <lavery_william@yahoo.com>
+  
+### About this Application
 
-## Available Scripts
+![Home Page](public/HomePage.png)
 
-In the project directory, you can run:
 
-### `npm start`
+This application is our first React Application that uses Fetch API to communicate with a server for information about recent movies. Our application uses React Router to allow the user to manuever through this webpage to see movies and their ratings. Users can click on a movie, and see more indepth information about that movie in a seperate url. A user can manuever back to their home page simply by clicking the button at the bottom of the webpage, or clicking the header. Initial stages of the project used conditional rendering to display different views to the user. After refactoring to use React Router, we removed the old logic that handeled the conditional rendering.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Home Page](public/Single-Movie.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Futhermore, this application also comes with Cypress installed, and Cypress tests for the User if they want to test the application's consistency. The project also uses PropTypes, and has a responsive display to provide clear views across various devices including cell phones, tablets and PC's. Error messages are provided to the user in the case of incorrect URL's and server problems.
 
-### `npm test`
+![Home Page](public/Error-Page.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Using this Application:
 
-### `npm run build`
+This application as a deployed link, located here:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you wish to use this application locally, do the following:
+1. Clone this repository
+2. Cd into the respoitory
+3. Run this application by using 'npm start'. This will open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Learning Goals
+- Build our first App with React
+- Learn to manage data flow, data manipulation, data storage and DOM rendering of data across multiple functional components
+- Learn to use Cypress to test DOM rendering, fetch calls and error handling
+- Understand and account for asynchronous Javascript within the App
+- Create a single page App that looks and functions like a multi-page App using Router
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Wins and Challenges:
+- Learned how to use React and Router to organize your components
+- Used Cypress to test our application
+- Successfully refactored our application multiple times throughout our development process.
+- Finished Project significally ahead of schedule
+- Learned about using conditional redering for error handling to display our error page if a fetch request fails due to the server being unavailable or being given a bad URL

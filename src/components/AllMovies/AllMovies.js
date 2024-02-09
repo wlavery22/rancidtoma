@@ -33,7 +33,6 @@ export default AllMovies;
 
 AllMovies.propTypes = {
   movies: PropTypes.array.isRequired,
-  // onMovieClick: PropTypes.func.isRequired,
   updateMovieId: PropTypes.func.isRequired,
   updateMovieInfo: PropTypes.func.isRequired,
   handleError: PropTypes.func.isRequired,

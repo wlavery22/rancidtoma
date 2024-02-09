@@ -9,7 +9,7 @@
 
 .movie-card:hover {
 	transform: scale(1.2);
-	background-color: #818181;
+	border-color: #818181;
 	transition: 0.3s;
 	cursor: pointer;
 }
@@ -19,3 +19,7 @@ img{
 	max-width: max-content;
 }
 
+a {
+	color: aliceblue;
+	text-decoration: none;
+}

@@ -7,6 +7,7 @@ import { useParams, Link, Outlet } from 'react-router-dom';
 
 function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, handleError }){
 	const [movieInfo, setMovieInfo] = useState(true);
+	const [hasError, setHasError] = useState(false);
 	const myElementRef = useRef(null);
 	const handleClick = () => {
 
@@ -21,7 +22,6 @@ function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, 
 		.then(data => {
 			updateMovieInfo(data.movie)
 			updateMovieId(id)
-			// onMovieClick()
 		})
     .catch(error => {
 		handleError(error.message)
@@ -29,12 +29,13 @@ function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, 
 
 	}
 	return (
-		<Link to={`/movie/${id}`}>
 		<div className='movie-card' id={id} onClick={handleClick} >
+			<Link to={`/movie/${id}`}>
 			<img src = {posterPath} alt = {title}/>
-			<h2>{rating}</h2>
-		</div>
+			<h2>{title}</h2>
+			<h2>Rating: {rating}/10 </h2>
 		</Link>
+		</div>
 	)
 }
 
@@ -52,7 +53,6 @@ Movie.propTypes = {
   id: PropTypes.number.isRequired,
 	posterPath: isURL,
 	title: PropTypes.string.isRequired,
-  // onMovieClick: PropTypes.func.isRequired,
   updateMovieId: PropTypes.func.isRequired,
   updateMovieInfo: PropTypes.func.isRequired,
 }

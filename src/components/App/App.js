@@ -3,7 +3,7 @@ import movieData from '../../data';
 import AllMovies from '../AllMovies/AllMovies';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import Error from '../Error/Error.js'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import  { useEffect, useState } from 'react';
 
 function App() {
@@ -52,39 +52,19 @@ function App() {
     fetchAllMovies()
   },[])
 
-	// useEffect(() => {
-	// 	console.log('Movie Info Object:',singleMovieInfo);
-	// },[singleMovieInfo])
-
-	// useEffect(() => {
-	// 	console.log('Got error: ',error);
-	// },[error])
-
-	// useEffect(() => {
-	// 	console.log("movieId in App.js",movieId);
-	// },[movieId])
-
   return (
     <div className="App">
+			<Link to={`/`}>
       <header className="App-header">
-        <h1>All Movies</h1>
+        <h1>Rancid Tomatillos</h1>
       </header>
+			</Link>
       <main>
 				<Routes>
 					<Route path='/' element={<AllMovies movies={movies} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>}/>
 					<Route path='/movie/:id' element={<MovieInfo singleMovieInfo={singleMovieInfo}/>}/>
 					<Route path='*' element={<Error />}/>
 				</Routes>
-				{/* <Link to={`/${id}`}></Link> */}
-		 {/* {error ? (
-			<h2>Error{error}</h2>
-		) : !showMovieInfo ? (
-			<AllMovies movies={movies} onMovieClick={handleMovieClick} 
-			updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} 
-			handleError={handleError}/>
-		) : (
-			<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
-		)}  */}
       </main>
     </div>
   );
