@@ -3,7 +3,7 @@ import movieData from '../../data';
 import AllMovies from '../AllMovies/AllMovies';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import Error from '../Error/Error.js'
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import  { useEffect, useState } from 'react';
 
 function App() {
@@ -66,9 +66,11 @@ function App() {
 
   return (
     <div className="App">
+			<Link to={`/`}>
       <header className="App-header">
-        <h1>All Movies</h1>
+        <h1>Rancid Tomatillos</h1>
       </header>
+			</Link>
       <main>
 				<Routes>
 					<Route path='/' element={<AllMovies movies={movies} updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} handleError={handleError}/>}/>

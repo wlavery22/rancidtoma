@@ -1,3 +1,20 @@
-.movieInfo{
-	transition: 0.3s;
+* {
+  background-color: #282c34;
+	color: aliceblue;
 }
+.movieInfo{
+	background-color: #282c34;
+}
+
+.smallInfo{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+p{
+	padding: 0px 40px;
+	text-decoration: none;
+}
+

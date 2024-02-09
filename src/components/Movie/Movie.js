@@ -25,18 +25,18 @@ function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, 
 			// onMovieClick()
 		})
     .catch(error => {
-			console.log('Did not get Movie');
+			// console.log('Did not get Movie');
 		handleError(error.message)
 	})
 
 	}
 	return (
-		<Link to={`/movie/${id}`}>
 		<div className='movie-card' id={id} onClick={handleClick} >
+			<Link to={`/movie/${id}`}>
 			<img src = {posterPath} alt = {title}/>
 			<h2>{rating}</h2>
-		</div>
 		</Link>
+		</div>
 	)
 }
 
