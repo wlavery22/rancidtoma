@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.e4a489ba.css",
-    "main.js": "/react-gh-pages/static/js/main.64c61fce.js",
-    "static/js/787.951f3f8d.chunk.js": "/react-gh-pages/static/js/787.951f3f8d.chunk.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.e4a489ba.css.map": "/react-gh-pages/static/css/main.e4a489ba.css.map",
-    "main.64c61fce.js.map": "/react-gh-pages/static/js/main.64c61fce.js.map",
-    "787.951f3f8d.chunk.js.map": "/react-gh-pages/static/js/787.951f3f8d.chunk.js.map"
+    "main.css": "/rancidtoma/static/css/main.e4a489ba.css",
+    "main.js": "/rancidtoma/static/js/main.254a21bf.js",
+    "static/js/787.951f3f8d.chunk.js": "/rancidtoma/static/js/787.951f3f8d.chunk.js",
+    "index.html": "/rancidtoma/index.html",
+    "main.e4a489ba.css.map": "/rancidtoma/static/css/main.e4a489ba.css.map",
+    "main.254a21bf.js.map": "/rancidtoma/static/js/main.254a21bf.js.map",
+    "787.951f3f8d.chunk.js.map": "/rancidtoma/static/js/787.951f3f8d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e4a489ba.css",
-    "static/js/main.64c61fce.js"
+    "static/js/main.254a21bf.js"
   ]
 }
