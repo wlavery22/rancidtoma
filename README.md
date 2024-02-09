@@ -1,8 +1,8 @@
 # Rancid Tomatoes
 
 ## Developed by:
-  Matthew Shindel : <matthew@shindel.com> <github.com/MatthewShindel>
-  Dan Lavery : <lavery_william@yahoo.com> <github.com/wlavery22>
+  Matthew Shindel : <https://matthew@shindel.com> <github.com/MatthewShindel>
+  Dan Lavery : <https://lavery_william@yahoo.com> <github.com/wlavery22>
   
 ### About this Application
 
