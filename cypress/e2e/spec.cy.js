@@ -63,7 +63,7 @@ describe('template spec', () => {
 			statusCode: 500,
 		})
 			.get(".all-movies-container").find('.movie-card').eq(0).click()
-			.get('.errorPage').should("have.text", 'Page not FoundClick this to head back home!')
+			.get('.errorPage').should("have.text", 'Page not FoundClick here to head back home!')
 			.url().should('eq', 'http://localhost:3000/movie/436270')
 	});
 })

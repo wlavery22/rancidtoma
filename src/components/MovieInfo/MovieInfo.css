@@ -18,3 +18,17 @@ p{
 	text-decoration: none;
 }
 
+input{
+	margin: 30px;
+	transition: 0.3s;
+	border-radius: 5px;
+	font-size: 1.3em;
+}
+
+input:hover{
+
+	transition: 0.3s;
+	transform: scale(1.2);
+	cursor: pointer;
+}
+

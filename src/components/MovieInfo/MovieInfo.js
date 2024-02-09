@@ -24,23 +24,21 @@ function MovieInfo({ singleMovieInfo }) {
 		}
 	}
 	let testVariable = useParams();
-	// console.log(testVariable);
-	// console.log('singlemovieinfo', singleMovieInfo)
 	if (singleMovieInfo.id) {
 		return (
 			<div className="movieInfo" id={singleMovieInfo.id}>
-					<img src={singleMovieInfo.backdrop_path} alt={singleMovieInfo.title} />
-					<h1 className="poster">{singleMovieInfo.title}</h1>
-					<p className="synopsis">{singleMovieInfo.overview}</p>
-					<div className="smallInfo">
-						<p className="rating">Rating: {singleMovieInfo.average_rating}</p>
-						<p className="genres">Genres: {singleMovieInfo.genres.join(", ")}</p>
-						<p className="runTime">Runtime : {singleMovieInfo.runtime}</p>
-					</div>
-					<Link to={`/`}>
-					<input type="button" className="exitButton" value={'Click to Leave'}></input>
-			</Link>
+				<img src={singleMovieInfo.backdrop_path} alt={singleMovieInfo.title} />
+				<h1 className="poster">{singleMovieInfo.title}</h1>
+				<p className="synopsis">{singleMovieInfo.overview}</p>
+				<div className="smallInfo">
+					<p className="rating">Rating: {singleMovieInfo.average_rating}</p>
+					<p className="genres">Genres: {singleMovieInfo.genres.join(", ")}</p>
+					<p className="runTime">Runtime : {singleMovieInfo.runtime}</p>
 				</div>
+				<Link to={`/`}>
+					<input type="button" className="exitButton" value={'Click to Leave'}></input>
+				</Link>
+			</div>
 		)
 	} else {
 		return <Error />
@@ -51,7 +49,5 @@ function MovieInfo({ singleMovieInfo }) {
 export default MovieInfo;
 
 MovieInfo.propTypes = {
-	// onExitClick: PropTypes.func.isRequired,
-	// be sure to deeply validate complex types! arrays/objects
 	singleMovieInfo: PropTypes.object.isRequired,
 }

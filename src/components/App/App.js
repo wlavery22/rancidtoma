@@ -52,18 +52,6 @@ function App() {
     fetchAllMovies()
   },[])
 
-	// useEffect(() => {
-	// 	console.log('Movie Info Object:',singleMovieInfo);
-	// },[singleMovieInfo])
-
-	// useEffect(() => {
-	// 	console.log('Got error: ',error);
-	// },[error])
-
-	// useEffect(() => {
-	// 	console.log("movieId in App.js",movieId);
-	// },[movieId])
-
   return (
     <div className="App">
 			<Link to={`/`}>
@@ -77,16 +65,6 @@ function App() {
 					<Route path='/movie/:id' element={<MovieInfo singleMovieInfo={singleMovieInfo}/>}/>
 					<Route path='*' element={<Error />}/>
 				</Routes>
-				{/* <Link to={`/${id}`}></Link> */}
-		 {/* {error ? (
-			<h2>Error{error}</h2>
-		) : !showMovieInfo ? (
-			<AllMovies movies={movies} onMovieClick={handleMovieClick} 
-			updateMovieId={updateMovieId} updateMovieInfo={updateMovieInfo} 
-			handleError={handleError}/>
-		) : (
-			<MovieInfo onExitClick={handleBackClick} singleMovieInfo={singleMovieInfo} />
-		)}  */}
       </main>
     </div>
   );

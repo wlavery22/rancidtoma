@@ -22,10 +22,8 @@ function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, 
 		.then(data => {
 			updateMovieInfo(data.movie)
 			updateMovieId(id)
-			// onMovieClick()
 		})
     .catch(error => {
-			// console.log('Did not get Movie');
 		handleError(error.message)
 	})
 
@@ -34,7 +32,8 @@ function Movie({ id, posterPath, title, rating, updateMovieId, updateMovieInfo, 
 		<div className='movie-card' id={id} onClick={handleClick} >
 			<Link to={`/movie/${id}`}>
 			<img src = {posterPath} alt = {title}/>
-			<h2>{rating}</h2>
+			<h2>{title}</h2>
+			<h2>Rating: {rating}/10 </h2>
 		</Link>
 		</div>
 	)
@@ -54,7 +53,6 @@ Movie.propTypes = {
   id: PropTypes.number.isRequired,
 	posterPath: isURL,
 	title: PropTypes.string.isRequired,
-  // onMovieClick: PropTypes.func.isRequired,
   updateMovieId: PropTypes.func.isRequired,
   updateMovieInfo: PropTypes.func.isRequired,
 }
